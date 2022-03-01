@@ -1,4 +1,25 @@
 package com.sd;
 
-public class Cirkel {
+import java.awt.*;
+
+public class Cirkel extends Shape {
+    Point findMidterpunkt() {
+        return null;
+    }
+
+    double findAreal() {
+        return 0;
+    }
+
+    double findOmkreds() {
+        return 0;
+    }
+
+    boolean erPunktetIndeIFormen() {
+        return false;
+    }
+
+    double afstandMellemFormer() {
+        return 0;
+    }
 }

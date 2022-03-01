@@ -1,5 +1,6 @@
 package com.sd;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public abstract class Shape {
@@ -9,7 +10,7 @@ public abstract class Shape {
     //Shape();
     //måske kan jeg ikke have en constructor i den abstrakte class?
 
-    abstract String findMidterpunkt();
+    abstract Point findMidterpunkt();
     //bare send en string der siger "midterpunktet er: " +x "," +y
 
     abstract double findAreal();
