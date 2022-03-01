@@ -4,32 +4,19 @@ import java.util.ArrayList;
 
 public abstract class Shape {
 
-    ArrayList<Integer> Xkor = new ArrayList<Integer>();
-    ArrayList<Integer> Ykor = new ArrayList<Integer>();
 
-    Shape(){}
 
-    public int findMidterpunktX(){
-        return 0;
-    }
+    //Shape();
+    //måske kan jeg ikke have en constructor i den abstrakte class?
 
-    public int findMidterpunktY(){
-        return 0;
-    }
+    abstract String findMidterpunkt();
+    //bare send en string der siger "midterpunktet er: " +x "," +y
 
-    public double findAreal(){
-        return 0;
-    }
+    abstract double findAreal();
 
-    public double findOmkreds(){
-        return 0;
-    }
+    abstract double findOmkreds();
 
-    public boolean erPunktetIndeIFormen(){
-        return false;
-    }
+    abstract boolean erPunktetIndeIFormen();
 
-    public double afstandMellemFormer(){
-        return 0;
-    }
+    abstract double afstandMellemFormer();
 }
