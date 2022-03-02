@@ -18,7 +18,38 @@ public class Rektangel extends Shape {
     double DX;
     double DY;
 
-    //Constructor der tager imod koordinator og placerer dem i deres doubles
+    double andenAX;
+    double andenAY;
+
+    double andenBX;
+    double andenBY;
+
+    double andenCX;
+    double andenCY;
+
+    double andenDX;
+    double andenDY;
+
+    double pX;
+    double pY;
+    boolean erDetInde;
+
+    double højX;
+    double lavX;
+    double højY;
+    double lavY;
+
+    double længdeX;
+    double længdeY;
+
+    double midtX;
+    double midtY;
+
+    //Vi bruger overloaded constructors så man f.eks. ikke behøver at indtaste koordinator for 2 rektangler, hvis man bare vil have
+    //arealet af ét
+    //Constructors der tager imod koordinator og placerer dem i deres doubles:
+
+    //rektangel constructor
     public Rektangel(double AX, double AY, double BX, double BY, double CX, double CY, double DX, double DY) {
         this.AX = AX;
         this.AY = AY;
@@ -30,17 +61,46 @@ public class Rektangel extends Shape {
         this.DY = DY;
     }
 
+    //rektangel + punkt constructor
+    public Rektangel(double AX, double AY, double BX, double BY, double CX, double CY, double DX, double DY, double pX, double pY) {
+        this.AX = AX;
+        this.AY = AY;
+        this.BX = BX;
+        this.BY = BY;
+        this.CX = CX;
+        this.CY = CY;
+        this.DX = DX;
+        this.DY = DY;
+        this.pX = pX;
+        this.pY = pY;
+    }
+
+    //2 rektangler constructor
+    public Rektangel(double AX, double AY, double BX, double BY, double CX, double CY, double DX, double DY,
+                     double andenAX, double andenAY, double andenBX, double andenBY, double andenCX, double andenCY,
+                     double andenDX, double andenDY) {
+        this.AX = AX;
+        this.AY = AY;
+        this.BX = BX;
+        this.BY = BY;
+        this.CX = CX;
+        this.CY = CY;
+        this.DX = DX;
+        this.DY = DY;
+        this.pX = pX;
+        this.pY = pY;
+        this.andenAX = andenAX;
+        this.andenAY = andenAY;
+        this.andenBX = andenBX;
+        this.andenBY = andenBY;
+        this.andenCX = andenCX;
+        this.andenCY = andenCY;
+        this.andenDX = andenDX;
+        this.andenDY = andenDY;
+    }
+
     //Point2D.Double er ligesom et point altså to koordinator, men koordinatorne kan være doubles ikke kun ints
     Point2D.Double findMidterpunkt() {
-
-        double højX;
-        double lavX;
-        double højY;
-        double lavY;
-
-        double midtX;
-        double midtY;
-
         //Opret 2 arrays der holder henholdsvis X og Y koordinator,
         //så de nemt kan sammenlignes
         double[] Xkor = {AX, BX, CX, DX};
@@ -66,22 +126,34 @@ public class Rektangel extends Shape {
     }
 
     double findAreal() {
+        double areal;
         //find højde
+        længdeY = højY-lavY;
         //find bredde
-        //
-
-        return 0;
+        længdeX = højX-lavX;
+        //find areal
+        areal = længdeX*længdeY;
+        return areal;
     }
 
     double findOmkreds() {
-        return 0;
+        //find højde
+        længdeY = højY-lavY;
+        //find bredde
+        længdeX = højX-lavX;
+        double omkreds = (længdeX*2)+(længdeY*2);
+        return omkreds;
     }
 
     boolean erPunktetIndeIFormen() {
-        return false;
+        if (pX>lavX && pY>lavY && pX<højX && pY<højY) {
+            erDetInde = true;
+        }
+        return erDetInde;
     }
 
     double afstandMellemFormer() {
+
         return 0;
     }
 }

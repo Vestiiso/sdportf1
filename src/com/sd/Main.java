@@ -6,9 +6,20 @@ import java.awt.geom.Point2D;
 public class Main {
 
     public static void main(String[] args) {
+        //Opsætning og test af Rektangel
+        Rektangel simpelRektangel= new Rektangel(0, 2, 0,20, 10,20, 10, 2);
+        System.out.println("*** simpelRektangel: ***");
+        System.out.println("midterpunktet er: " + simpelRektangel.findMidterpunkt());
+        System.out.println("arealet er: " + simpelRektangel.findAreal());
+        System.out.println("omkredsen er: " + simpelRektangel.findOmkreds());
+        System.out.println("er punktet inden i formen?: " + simpelRektangel.erPunktetIndeIFormen() + "\n");
 
-        Rektangel førsteRektangel= new Rektangel(0, 1, 0,8, 6,8, 6, 1);
-        System.out.println(førsteRektangel.findMidterpunkt());
-
+        //Opsætning og test af Rektangel + punkt
+        Rektangel rektangelPunkt= new Rektangel(0, 1, 0,8, 6,8, 6, 1, 5, 3);
+        System.out.println("*** rektangelPunkt: ***");
+        System.out.println("midterpunktet er: " + rektangelPunkt.findMidterpunkt());
+        System.out.println("arealet er: " + rektangelPunkt.findAreal());
+        System.out.println("omkredsen er: " + rektangelPunkt.findOmkreds());
+        System.out.println("er punktet inden i formen?: " + rektangelPunkt.erPunktetIndeIFormen() + "\n");
     }
 }
