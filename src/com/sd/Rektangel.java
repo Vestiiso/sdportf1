@@ -1,36 +1,25 @@
 package com.sd;
 
-import java.awt.*;
-import java.util.ArrayList;
+import java.awt.geom.Point2D;
 import java.util.Arrays;
 
 public class Rektangel extends Shape {
 
-    //Vi har brugt ints til koordinatorne for at gøre programmet mere
-    //simpelt, men de kan nemt laves om til doubles hvis man ønsker
-    //decimaler i sine koordinator
+    //Opret doubles til at holde alle koordinator enkeltvis
+    double AX;
+    double AY;
 
-    //Opret ints til at holde alle koordinator enkeltvis
+    double BX;
+    double BY;
 
-    int AX;
-    int AY;
+    double CX;
+    double CY;
 
-    int BX;
-    int BY;
+    double DX;
+    double DY;
 
-    int CX;
-    int CY;
-
-    int DX;
-    int DY;
-
-    //Opret 2 arrays der holder henholdsvis x og y koordinator,
-    //så de nemt kan sammenlignes
-    int[] Xkor = {AX, BX, CX, DX};
-    int[] Ykor = {AY, BY, CY, DY};
-
-    //Constructor der tager imod koordinator og placerer dem i deres ints
-    public Rektangel(int AX, int AY, int BX, int BY, int CX, int CY, int DX, int DY) {
+    //Constructor der tager imod koordinator og placerer dem i deres doubles
+    public Rektangel(double AX, double AY, double BX, double BY, double CX, double CY, double DX, double DY) {
         this.AX = AX;
         this.AY = AY;
         this.BX = BX;
@@ -41,23 +30,38 @@ public class Rektangel extends Shape {
         this.DY = DY;
     }
 
+    //Point2D.Double er ligesom et point altså to koordinator, men koordinatorne kan være doubles ikke kun ints
+    Point2D.Double findMidterpunkt() {
 
-    Point findMidterpunkt() { //er en string for at vi nemmest kan give begge ints på samme tid
-        //ret evt. til "Point" typen senere
-        int højX;
-        int lavX;
+        double højX;
+        double lavX;
+        double højY;
+        double lavY;
 
-        int midtX = 0;
-        int midtY = 0;
+        double midtX;
+        double midtY;
 
-        //Sorter x koordinatorne, så vi kan udplukke den højeste og laveste
-        Arrays.sort(Xkor);
+        //Opret 2 arrays der holder henholdsvis X og Y koordinator,
+        //så de nemt kan sammenlignes
+        double[] Xkor = {AX, BX, CX, DX};
+        double[] Ykor = {AY, BY, CY, DY};
+
+        //Find ud af hvor lange de horisontale og vertikale sider er (virker kun i et rektangel fordi alle vinkler
+        // er 90 grader) og find herefter ud af hvor langt der er til midtpunktet af
+        Arrays.sort(Xkor); //Sorter Y koordinatorne, så vi kan udplukke den højeste og laveste
         højX = Xkor[3];
         lavX = Xkor[0];
-        midtX = Xkor[0];  //der er gået noget galt her
+        midtX = (højX-lavX)/2;
 
-        //Lav et punkt ud fra x og y koorndinatet og return det
-        Point midtPunkt = new Point(midtX, midtY);
+        Arrays.sort(Ykor); //Sorter Y koordinatorne, så vi kan udplukke den højeste og laveste
+        højY = Ykor[3];
+        lavY = Ykor[0];
+        midtY = (højY-lavY)/2;
+
+        //Lav et punkt ud fra X og Y koorndinatet og return det
+        //Vi pludser længden til midtpunktet med det laveste koordinat, så vi får midtpunktets koordinat
+        //Point2D.Double er ligesom et point altså to koordinator, men koordinatorne kan være doubles ikke kun ints
+        Point2D.Double midtPunkt = new Point2D.Double(midtX+lavX, midtY+lavY);
         return midtPunkt;
     }
 

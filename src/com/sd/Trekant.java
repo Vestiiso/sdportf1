@@ -1,9 +1,9 @@
 package com.sd;
 
-import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Trekant extends Shape{
-    Point findMidterpunkt() {
+    Point2D.Double findMidterpunkt() {
         return null;
     }
 
