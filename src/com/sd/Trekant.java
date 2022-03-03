@@ -171,15 +171,10 @@ public class Trekant extends Shape{
         midtPY = (AY + BY + CY)/3;
         Point2D.Double midtPunkt = new Point2D.Double(midtPX, midtPY);
 
-        System.out.println(midtPunkt);
-
         //så finder vi midterpunktet for den anden trekant
         andenMidtPX = (andenAX + andenBX + andenCX)/3;
         andenMidtPY = (andenAY + andenBY + andenCY)/3;
         Point2D.Double andenMidtPunkt = new Point2D.Double(andenMidtPX, andenMidtPY);
-
-        System.out.println(andenMidtPunkt);
-
 
         //Så bruger vi distance til at finde afstanden mellem dem
         afstand = midtPunkt.distance(andenMidtPunkt);

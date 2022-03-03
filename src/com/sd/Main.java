@@ -53,5 +53,28 @@ public class Main {
         System.out.println("areal1 er: " + trekanter.findAreal());
         System.out.println("omkreds1 er: " + trekanter.findOmkreds());
         System.out.println("afstanden mellem midterpunkterne er: " + trekanter.afstandMellemFormer() + "\n");
+
+        //Opsætning og test af cirkel
+        Cirkel simpelCirkel= new Cirkel (1, 0, 1);
+        System.out.println("*** simpelCirkel: ***");
+        System.out.println("midterpunktet er: " + simpelCirkel.findMidterpunkt());
+        System.out.println("arealet er: " + simpelCirkel.findAreal());
+        System.out.println("omkredsen er: " + simpelCirkel.findOmkreds() + "\n");
+
+        //Opsætning og test af cirkel + punkt
+        Cirkel cirkelPunkt= new Cirkel (1, 0, 1, 0.2,0.2);
+        System.out.println("*** simpelCirkel + punkt: ***");
+        System.out.println("midterpunkt1 er: " + cirkelPunkt.findMidterpunkt());
+        System.out.println("areal1 er: " + cirkelPunkt.findAreal());
+        System.out.println("omkreds1 er: " + cirkelPunkt.findOmkreds());
+        System.out.println("er punktet inden i formen?: " + cirkelPunkt.erPunktetIndeIFormen() + "\n");
+
+        //Opsætning og test af 2 cirkler
+        Cirkel cirkler= new Cirkel (1, 0, 1, 3,3, 4);
+        System.out.println("*** 2 cirkler: ***");
+        System.out.println("midterpunkt1 er: " + cirkler.findMidterpunkt());
+        System.out.println("areal1 er: " + cirkler.findAreal());
+        System.out.println("omkreds1 er: " + cirkler.findOmkreds());
+        System.out.println("afstanden er: " + cirkler.afstandMellemFormer());
     }
 }
