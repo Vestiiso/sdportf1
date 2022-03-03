@@ -30,5 +30,13 @@ public class Main {
         System.out.println("omkredsen af første rektangel er: " + rektangler.findOmkreds());
         System.out.println("afstanden mellem midterpunkterne er: " + rektangler.afstandMellemFormer() + "\n");
 
+
+        //Opsætning og test af trekant
+        Trekant simpelTrekant= new Trekant(0, 0, 1,1, 2,0);
+        System.out.println("*** simpelTrekant: ***");
+        System.out.println("midterpunktet er: " + simpelTrekant.findMidterpunkt());
+        System.out.println("arealet er: " + simpelTrekant.findAreal());
+        System.out.println("omkredsen er: " + simpelTrekant.findOmkreds() + "\n");
+
     }
 }

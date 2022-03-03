@@ -121,7 +121,7 @@ public class Rektangel extends Shape {
 
         //Find ud af hvor lange de horisontale og vertikale sider er (virker kun i et rektangel fordi alle vinkler
         // er 90 grader) og find herefter ud af hvor langt der er til midtpunktet af
-        Arrays.sort(Xkor); //Sorter Y koordinatorne, så vi kan udplukke den højeste og laveste
+        Arrays.sort(Xkor); //Sorter X koordinatorne, så vi kan udplukke den højeste og laveste
         højX = Xkor[3];
         lavX = Xkor[0];
         midtX = (højX-lavX)/2;
@@ -140,6 +140,18 @@ public class Rektangel extends Shape {
 
     double findAreal() {
         double areal;
+
+        double[] Xkor = {AX, BX, CX, DX};
+        double[] Ykor = {AY, BY, CY, DY};
+
+        Arrays.sort(Xkor);
+        højX = Xkor[3];
+        lavX = Xkor[0];
+
+        Arrays.sort(Ykor);
+        højY = Ykor[3];
+        lavY = Ykor[0];
+
         //find højde
         længdeY = højY-lavY;
         //find bredde
@@ -150,6 +162,17 @@ public class Rektangel extends Shape {
     }
 
     double findOmkreds() {
+        double[] Xkor = {AX, BX, CX, DX};
+        double[] Ykor = {AY, BY, CY, DY};
+
+        Arrays.sort(Xkor);
+        højX = Xkor[3];
+        lavX = Xkor[0];
+
+        Arrays.sort(Ykor);
+        højY = Ykor[3];
+        lavY = Ykor[0];
+
         //find højde
         længdeY = højY-lavY;
         //find bredde
@@ -159,6 +182,17 @@ public class Rektangel extends Shape {
     }
 
     boolean erPunktetIndeIFormen() {
+        double[] Xkor = {AX, BX, CX, DX};
+        double[] Ykor = {AY, BY, CY, DY};
+
+        Arrays.sort(Xkor);
+        højX = Xkor[3];
+        lavX = Xkor[0];
+
+        Arrays.sort(Ykor);
+        højY = Ykor[3];
+        lavY = Ykor[0];
+
         if (pX>lavX && pY>lavY && pX<højX && pY<højY) {
             erDetInde = true;
         }
@@ -166,48 +200,24 @@ public class Rektangel extends Shape {
     }
 
     double afstandMellemFormer() {
-        // *** find midterpunkt for rektangel og opret et point2D.double med koordinatorne ***
-
-        //Opret 2 arrays der holder henholdsvis X og Y koordinator,
-        //så de nemt kan sammenlignes
-        double[] Xkor = {AX, BX, CX, DX};
-        double[] Ykor = {AY, BY, CY, DY};
-
-        //Find ud af hvor lange de horisontale og vertikale sider er (virker kun i et rektangel fordi alle vinkler
-        // er 90 grader) og find herefter ud af hvor langt der er til midtpunktet af
-        Arrays.sort(Xkor); //Sorter Y koordinatorne, så vi kan udplukke den højeste og laveste
-        højX = Xkor[3];
-        lavX = Xkor[0];
-        midtX = (højX-lavX)/2;
-
-        Arrays.sort(Ykor); //Sorter Y koordinatorne, så vi kan udplukke den højeste og laveste
-        højY = Ykor[3];
-        lavY = Ykor[0];
-        midtY = (højY-lavY)/2;
-
         //Lav et punkt ud fra X og Y koorndinatet og return det
         //Vi pludser længden til midtpunktet med det laveste koordinat, så vi får midtpunktets koordinat
         //Point2D.Double er ligesom et point altså to koordinator, men koordinatorne kan være doubles ikke kun ints
         Point2D.Double midtPunkt = new Point2D.Double(midtX+lavX, midtY+lavY);
         System.out.println("midtpunktet1 er: " + midtPunkt);
 
-        // *** find midterpunkt for rektangel 2 og opret et point2D.double med koordinatorne ***
-        //Opret 2 arrays der holder henholdsvis X og Y koordinator,
-        //så de nemt kan sammenlignes
         double[] andenXkor = {andenAX, andenBX, andenCX, andenDX};
         double[] andenYkor = {andenAY, andenBY, andenCY, andenDY};
 
-        //Find ud af hvor lange de horisontale og vertikale sider er (virker kun i et rektangel fordi alle vinkler
-        // er 90 grader) og find herefter ud af hvor langt der er til midtpunktet af
-        Arrays.sort(andenXkor); //Sorter Y koordinatorne, så vi kan udplukke den højeste og laveste
+        Arrays.sort(andenXkor);
         andenHøjX = andenXkor[3];
         andenLavX = andenXkor[0];
-        andenMidtX = (andenHøjX-andenLavX)/2;
 
-        Arrays.sort(andenYkor); //Sorter Y koordinatorne, så vi kan udplukke den højeste og laveste
+
+        Arrays.sort(andenYkor);
         andenHøjY = andenYkor[3];
         andenLavY = andenYkor[0];
-        andenMidtY = (andenHøjY-andenLavY)/2;
+
 
         //Lav et punkt ud fra X og Y koorndinatet og return det
         //Vi pludser længden til midtpunktet med det laveste koordinat, så vi får midtpunktets koordinat
