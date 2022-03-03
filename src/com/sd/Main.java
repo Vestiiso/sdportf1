@@ -38,5 +38,20 @@ public class Main {
         System.out.println("arealet er: " + simpelTrekant.findAreal());
         System.out.println("omkredsen er: " + simpelTrekant.findOmkreds() + "\n");
 
+        //Opsætning og test af trekant + punkt
+        Trekant trekantPunkt= new Trekant(0, 0, 1,1, 2,0, 1,0.5);
+        System.out.println("*** trekantPunkt: ***");
+        System.out.println("midterpunktet er: " + trekantPunkt.findMidterpunkt());
+        System.out.println("arealet er: " + trekantPunkt.findAreal());
+        System.out.println("omkredsen er: " + trekantPunkt.findOmkreds());
+        System.out.println("er punktet inden i formen?: " + trekantPunkt.erPunktetIndeIFormen() + "\n");
+
+        //Opsætning og test af 2 trekanter
+        Trekant trekanter= new Trekant(0, 0, 1,1, 2,0, 3,0,4,1,5,0);
+        System.out.println("*** trekanter: ***");
+        System.out.println("midterpunkt1 er: " + trekanter.findMidterpunkt());
+        System.out.println("areal1 er: " + trekanter.findAreal());
+        System.out.println("omkreds1 er: " + trekanter.findOmkreds());
+        System.out.println("afstanden mellem midterpunkterne er: " + trekanter.afstandMellemFormer() + "\n");
     }
 }

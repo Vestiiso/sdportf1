@@ -1,6 +1,7 @@
 package com.sd;
 
 import java.awt.*;
+import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import java.util.Arrays;
 
@@ -42,6 +43,9 @@ public class Trekant extends Shape{
 
     double midtPX;
     double midtPY;
+
+    double andenMidtPX;
+    double andenMidtPY;
 
     //Constructor for en enkelt trekant
     public Trekant(double AX, double AY, double BX, double BY, double CX, double CY) {
@@ -123,20 +127,63 @@ public class Trekant extends Shape{
 
     double findOmkreds() {
         //jeg vil bruge distance til at finde længden af alle sider, for til sidst at
-        //lægge dem sammen. Derfor laver jeg points for hjørnerne
+        //lægge dem sammen. Derfor laver vi points for hjørnerne
+        double omkreds;
+        double AB;
+        double BC;
+        double CA;
 
-        Point A = new Point(AX, AY);
-        Point B = new Point(BX, BY);
-        Point C = new Point(CX, CY);
+        //points til hvert hjørne i trekanten
+        Point2D.Double A = new Point2D.Double(AX, AY);
+        Point2D.Double B = new Point2D.Double(BX, BY);
+        Point2D.Double C = new Point2D.Double(CX, CY);
 
-        return 0;
+        //Find længden af hver side
+        AB = A.distance(B);
+        BC = B.distance(C);
+        CA = C.distance(A);
+
+        //læg siderne sammen for at få omkredsen
+        omkreds = AB + BC + CA;
+
+        return omkreds;
     }
 
     boolean erPunktetIndeIFormen() {
-        return false;
+        //Her bruger vi Path2D.Double for at kunne bruge contains.
+        boolean punktetErInde;
+
+        Path2D.Double trekanten = new Path2D.Double(); //opretter en ny path
+        trekanten.moveTo(AX, AY);                //opretter første punkt ved A
+        trekanten.lineTo(BX, BY);                //opretter en linje til B
+        trekanten.lineTo(CX, CY);                //opretter en linje fra B til C
+        trekanten.closePath();                   //opretter en linje tilbage til startpunktet ved A
+        erDetInde = trekanten.contains(pX, pY);  //tjekker om punktet er inde i trekanten
+
+        return erDetInde;
     }
 
     double afstandMellemFormer() {
-        return 0;
+        double afstand;
+
+        //først finder vi midterpunktet for den første trekant
+        midtPX = (AX + BX + CX)/3;
+        midtPY = (AY + BY + CY)/3;
+        Point2D.Double midtPunkt = new Point2D.Double(midtPX, midtPY);
+
+        System.out.println(midtPunkt);
+
+        //så finder vi midterpunktet for den anden trekant
+        andenMidtPX = (andenAX + andenBX + andenCX)/3;
+        andenMidtPY = (andenAY + andenBY + andenCY)/3;
+        Point2D.Double andenMidtPunkt = new Point2D.Double(andenMidtPX, andenMidtPY);
+
+        System.out.println(andenMidtPunkt);
+
+
+        //Så bruger vi distance til at finde afstanden mellem dem
+        afstand = midtPunkt.distance(andenMidtPunkt);
+
+        return afstand;
     }
 }
